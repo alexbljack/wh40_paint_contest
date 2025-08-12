@@ -29,3 +29,10 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           gradle-version: 7.4.1
+      - name: Run build with Gradle wrapper
+        id: gradle
+        run: ./gradlew clean bootJar
+      - name: List bot jar
+        run: ls bot/build/libs
+      - name: List DB jar
+        run: ls persistance/build/libs
