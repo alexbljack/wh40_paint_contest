@@ -1,4 +1,4 @@
-FROM eclipse-temurin:11
+FROM eclipse-temurin:17
 
 RUN mkdir /opt/app
 COPY bot/build/libs/bot-0.4.1.jar /opt/app
