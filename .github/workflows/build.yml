@@ -34,5 +34,17 @@ jobs:
         run: ./gradlew clean bootJar
       - name: List bot jar
         run: ls bot/build/libs
-      - name: List DB jar
-        run: ls persistance/build/libs
+      - name: Docker Login
+        uses: docker/login-action@v3.5.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v6.18.0
+        with:
+          context: bot/build/libs
+          push: true
+          tags: latest
+                
+        
